@@ -7,6 +7,8 @@ export function Header() {
         <Link to="/">Inicio</Link>
         <Link to="/personajes">Personajes</Link>
         <Link to="/localizaciones">Localizaciones</Link>
+        <Link to="/episodios">Episodios</Link>
+        <Link to="/filtro-personajes">Filtro Personajes</Link>
       </nav>
     </header>
   );

@@ -4,6 +4,8 @@ import { Footer } from "./Components/Footer";
 import { Localizaciones } from "./Components/Localizaciones/Localizaciones";
 import { Personajes } from "./Components/Personajes/Personajes";
 import { Inicio } from "./Components/Inicio/Inicio";
+import { Episodios } from "./Components/Episodios/Episodios";
+import { FiltroPersonaje } from "./Components/FiltroPersonajes/FiltroPersonaje";
 
 function App() {
   return (
@@ -21,7 +23,23 @@ function App() {
                 </div>
               }
             />
-            <Route path="/localizaciones" element={<Localizaciones />} />
+            <Route
+              path="/localizaciones"
+              element={
+                <div>
+                  <Localizaciones />
+                </div>
+              }
+            />
+            <Route
+              path="/episodios"
+              element={
+                <div>
+                  <Episodios />
+                </div>
+              }
+            />
+            <Route path="/filtro-personajes" element={<FiltroPersonaje />} />
           </Routes>
         </div>
       </BrowserRouter>
