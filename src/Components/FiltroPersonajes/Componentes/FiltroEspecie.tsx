@@ -16,6 +16,7 @@ export function FiltroEspecie() {
         onClick={() => setSpecies("Unknown")}
       />
       <label>Unknown</label>
+      <p>{species}</p>
     </div>
   );
 }
