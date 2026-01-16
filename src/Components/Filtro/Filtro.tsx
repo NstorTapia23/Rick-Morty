@@ -22,14 +22,34 @@ export function Filtro() {
 
     return params.toString();
   };
-
+  function functionMap() {
+    {
+      return personajesFiltrados.map((personaje) => (
+        <PersonajesCard
+          key={personaje.id}
+          name={personaje.name}
+          status={personaje.status}
+          species={personaje.species}
+          type={personaje.type}
+          gender={personaje.gender}
+          image={personaje.image}
+        />
+      ));
+    }
+  }
   const fetchPersonaje = async () => {
-    const response = await fetch(
-      `https://rickandmortyapi.com/api/character?${buildQuery()}`
-    );
-    const data = await response.json();
-    setPersonajesFiltrados(data.results);
-    console.log(data);
+    try {
+      const response = await fetch(
+        `https://rickandmortyapi.com/api/character?${buildQuery()}`
+      );
+      if (response.status !== 200) {
+        throw new Error("Hubo un error en la peticion");
+      }
+      const data = await response.json();
+      setPersonajesFiltrados(data.results);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
@@ -64,6 +84,7 @@ export function Filtro() {
                 className="bg-gray-700 text-white rounded-lg px-3 py-2
                      focus:outline-none focus:ring-2 focus:ring-cyan-400"
               >
+                <option value="">Todos</option>
                 <option value="Male">Masculino</option>
                 <option value="Female">Femenino</option>
                 <option value="unknown">Desconocido</option>
@@ -80,6 +101,7 @@ export function Filtro() {
                 className="bg-gray-700 text-white rounded-lg px-3 py-2
                      focus:outline-none focus:ring-2 focus:ring-cyan-400"
               >
+                <option value="">Todos</option>
                 <option value="alive">Vivo</option>
                 <option value="dead">Muerto</option>
                 <option value="unknown">Desconocido</option>
@@ -101,17 +123,11 @@ export function Filtro() {
       </div>
 
       <div className="flex flex-wrap justify-center gap-6 p-6 bg-gray-900 min-h-screen">
-        {personajesFiltrados.map((personaje) => (
-          <PersonajesCard
-            key={personaje.id}
-            name={personaje.name}
-            status={personaje.status}
-            species={personaje.species}
-            type={personaje.type}
-            gender={personaje.gender}
-            image={personaje.image}
-          />
-        ))}
+        {personajesFiltrados.length > 0 ? (
+          functionMap()
+        ) : (
+          <h1 className="text-white">No hay personajes</h1>
+        )}
       </div>
     </>
   );
