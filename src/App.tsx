@@ -5,7 +5,7 @@ import { Localizaciones } from "./Components/Localizaciones/Localizaciones";
 import { Personajes } from "./Components/Personajes/Personajes";
 import { Inicio } from "./Components/Inicio/Inicio";
 import { Episodios } from "./Components/Episodios/Episodios";
-import { FiltroPersonaje } from "./Components/FiltroPersonajes/FiltroPersonaje";
+import { Filtro } from "./Components/Filtro/Filtro";
 
 function App() {
   return (
@@ -39,7 +39,7 @@ function App() {
                 </div>
               }
             />
-            <Route path="/filtro-personajes" element={<FiltroPersonaje />} />
+            <Route path="/filtro" element={<Filtro />}></Route>
           </Routes>
         </div>
       </BrowserRouter>
